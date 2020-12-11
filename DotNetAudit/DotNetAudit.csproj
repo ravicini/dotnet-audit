@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Authors>Marco Ravicini</Authors>
+    <Copyright>The Unlicense</Copyright>
+    <Description>A .NET global tool to check all used packages for vulnerabilities using OSS Index.</Description>
+    <PackageId>dotnet-audit</PackageId>
+    <PackageLicenseUrl>https://unlicense.org/</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/ravicini/dotnet-audit</PackageProjectUrl>
+    <PackAsTool>true</PackAsTool>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/ravicini/dotnet-audit.git</RepositoryUrl>
+    <ToolCommandName>dotnet-ossindex</ToolCommandName>
+  </PropertyGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>
