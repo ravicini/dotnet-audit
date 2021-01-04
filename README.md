@@ -15,3 +15,11 @@ $ dotnet tool install dotnet-audit
 $ dotnet restore --use-lock-file
 $ dotnet audit <proj file>
 ```
+
+
+## Build
+
+```
+$ dotnet tool restore
+$ dotnet paket restore
+```

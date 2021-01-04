@@ -15,7 +15,7 @@
     <PackAsTool>true</PackAsTool>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/ravicini/dotnet-audit.git</RepositoryUrl>
-    <ToolCommandName>dotnet-ossindex</ToolCommandName>
+    <ToolCommandName>dotnet-audit</ToolCommandName>
   </PropertyGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

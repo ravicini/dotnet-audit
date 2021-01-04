@@ -1,14 +1,8 @@
 using System.Collections.Generic;
 
-namespace DotNetAudit
+namespace DotNetAudit.LockFile
 {
-    public class LockFile
-    {
-        public int version { get; set; }
-        public Dictionary<string, Dictionary<string, Dependency>> dependencies { get; set; }
-    }
-
-    public class Dependency
+    public class LockFileDependency
     {
         public string type { get; set; }
         public string requested { get; set; }

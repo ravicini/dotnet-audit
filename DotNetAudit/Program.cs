@@ -1,7 +1,8 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Text.Json;
+using System.Threading.Tasks;
+using DotNetAudit.LockFile;
+using DotNetAudit.OssIndex;
 
 namespace DotNetAudit
 {
@@ -9,15 +10,24 @@ namespace DotNetAudit
     {
         private const string PackagesLock = "packages.lock.json";
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            string testLockFile = "/home/marco/workspace/hb-therm/e-cockpit/api/ECockpitApi/packages.lock.json";
-            
-            using FileStream stream = File.OpenRead(testLockFile);
-            var lockFile = JsonSerializer.DeserializeAsync<LockFile>(stream).GetAwaiter().GetResult();
-            foreach (var dep in lockFile.dependencies.First().Value)
+            string testLockFile = $"/home/marco/workspace/dotnet-audit/samples/{PackagesLock}";
+
+            var dependencies = await LockFileReader.ReadDependencies(testLockFile);
+            foreach (var dependency in dependencies)
             {
-                Console.WriteLine($"{dep.Key} {dep.Value.resolved}");
+                Console.WriteLine($"{dependency.Name} ({dependency.Type.ToString()}) [{dependency.ResolvedVersion}]");
+            }
+            
+            var reports = await OssIndexReader.GetVulnerabilities(dependencies);
+            foreach (var report in reports)
+            {
+                if (report.Vulnerabilities.Any())
+                {
+                    Console.WriteLine($"{report.Name}");
+                    Console.WriteLine($"{report.Description}");
+                }
             }
         }
     }

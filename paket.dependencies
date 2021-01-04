@@ -8,3 +8,4 @@ nuget System.Text.Json 5.0.0
 nuget xunit 2.4.1
 nuget xunit.runner.visualstudio 2.4.3
 nuget coverlet.collector 1.3.0
+nuget OssIndexClient 1.0.1
